@@ -12,7 +12,34 @@
     "incident-response",
     "threat-intelligence",
     "forensics",
-    "detection-engineering"
+    "detection-engineering",
+    "threat-hunting",
+    "malware-analysis",
+    "reverse-engineering",
+    "digital-forensics",
+    "dfir",
+    "soc",
+    "siem",
+    "cloud-security",
+    "identity-security",
+    "active-directory",
+    "kubernetes-security",
+    "container-security",
+    "vulnerability-management",
+    "penetration-testing",
+    "red-team",
+    "purple-team",
+    "attack-simulation",
+    "mitre-attack",
+    "nist-csf",
+    "ot-security",
+    "mobile-security",
+    "application-security",
+    "api-security",
+    "supply-chain-security",
+    "ransomware",
+    "osint",
+    "ioc-enrichment"
   ],
   "skills": "./skills/",
   "interface": {
@@ -24,12 +51,25 @@
     "capabilities": [
       "Skills",
       "Security Analysis",
-      "Incident Response"
+      "Incident Response",
+      "Threat Hunting",
+      "Detection Engineering",
+      "Malware Analysis",
+      "Digital Forensics",
+      "Threat Intelligence",
+      "Cloud Security",
+      "Identity Security",
+      "Vulnerability Management",
+      "Penetration Testing",
+      "Red Team Operations",
+      "Purple Team Exercises",
+      "Security Automation",
+      "Compliance Mapping"
     ],
     "defaultPrompt": [
-      "Investigate suspicious security activity.",
-      "Build a detection for a threat technique.",
-      "Analyze malware or forensic artifacts."
+      "Triage a security alert, map ATT&CK techniques, and draft response steps.",
+      "Hunt across cloud, identity, endpoint, and network logs for compromise.",
+      "Analyze malware or forensic artifacts and extract actionable indicators."
     ],
     "brandColor": "#1F6FEB"
   }
