@@ -11,7 +11,8 @@ The plugin is intended for security teams, incident responders, detection engine
 - 754 bundled `references/` directories
 - 754 bundled `scripts/` directories
 - 280 bundled `assets/` directories
-- A Codex plugin manifest at `.codex-plugin/plugin.json`
+- A Codex marketplace manifest at `.agents/plugins/marketplace.json`
+- A Codex plugin manifest at `plugins/security-superpowers/.codex-plugin/plugin.json`
 
 The collection covers defensive operations, security engineering, and authorized assessment workflows across cloud, identity, endpoint, network, application, mobile, OT/ICS, malware, forensics, and governance domains.
 
@@ -19,15 +20,20 @@ The collection covers defensive operations, security engineering, and authorized
 
 ```text
 security-superpowers/
-├── .codex-plugin/
-│   └── plugin.json
-├── skills/
-│   └── <skill-name>/
-│       ├── SKILL.md
-│       ├── LICENSE
-│       ├── references/
-│       ├── scripts/
-│       └── assets/
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json
+├── plugins/
+│   └── security-superpowers/
+│       ├── .codex-plugin/
+│       │   └── plugin.json
+│       └── skills/
+│           └── <skill-name>/
+│               ├── SKILL.md
+│               ├── LICENSE
+│               ├── references/
+│               ├── scripts/
+│               └── assets/
 └── README.md
 ```
 
@@ -42,6 +48,7 @@ The plugin manifest declares:
 - Category: `Security`
 - License: `Apache-2.0`
 - Skills path: `./skills/`
+- Marketplace: `.agents/plugins/marketplace.json`
 
 The plugin metadata includes discovery keywords for:
 
@@ -129,19 +136,47 @@ Analyze malware or forensic artifacts and extract actionable indicators.
 
 ## Installation
 
-This repository is already structured as a Codex plugin root. The plugin manifest is:
+This repository is structured as a Codex marketplace root. The marketplace manifest is:
 
 ```text
-.codex-plugin/plugin.json
+.agents/plugins/marketplace.json
 ```
 
-For a local Codex marketplace workflow, clone the repository into the marketplace plugin directory:
+The plugin bundle lives at:
+
+```text
+plugins/security-superpowers/
+```
+
+### Codex App
+
+Register the public marketplace from this repository:
 
 ```bash
-git clone https://github.com/b3belov/security-superpowers.git ~/plugins/security-superpowers
+codex plugin marketplace add b3belov/security-superpowers
 ```
 
-Then make sure your personal marketplace file includes an entry for the plugin:
+Then install the plugin:
+
+```bash
+codex plugin add security-superpowers@security-superpowers
+```
+
+In the Codex app, open Plugins, choose the `Security Superpowers` marketplace, and install `Security Superpowers`.
+
+Start a new Codex thread after installing or refreshing the plugin so Codex reloads plugin metadata and skill entries.
+
+### Local Development Install
+
+For local development, clone the repository and register that local path as the marketplace:
+
+```bash
+git clone https://github.com/b3belov/security-superpowers.git ~/src/security-superpowers
+codex plugin marketplace add ~/src/security-superpowers
+codex plugin add security-superpowers@security-superpowers
+```
+
+The repository includes this marketplace entry:
 
 ```json
 {
@@ -157,20 +192,6 @@ Then make sure your personal marketplace file includes an entry for the plugin:
   "category": "Security"
 }
 ```
-
-For the default personal marketplace path, that marketplace file is usually:
-
-```text
-~/.agents/plugins/marketplace.json
-```
-
-After the marketplace entry exists, install or refresh the plugin in Codex with the marketplace name configured in that file, for example:
-
-```bash
-codex plugin add security-superpowers@personal
-```
-
-Start a new Codex thread after installing or refreshing the plugin so Codex reloads plugin metadata and skill entries.
 
 ## Skill Format
 
@@ -204,13 +225,13 @@ Skill validation: 754 passed, 0 failed
 During development, validate the plugin root with the plugin creator validator from your Codex skill installation:
 
 ```bash
-python3 /path/to/plugin-creator/scripts/validate_plugin.py /path/to/security-superpowers
+python3 /path/to/plugin-creator/scripts/validate_plugin.py /path/to/security-superpowers/plugins/security-superpowers
 ```
 
 To validate an individual skill:
 
 ```bash
-python3 /path/to/skill-creator/scripts/quick_validate.py /path/to/security-superpowers/skills/<skill-name>
+python3 /path/to/skill-creator/scripts/quick_validate.py /path/to/security-superpowers/plugins/security-superpowers/skills/<skill-name>
 ```
 
 If your local Python environment does not include YAML support, install or provide `PyYAML` for the validation run.
@@ -219,7 +240,7 @@ If your local Python environment does not include YAML support, install or provi
 
 When adding a new skill:
 
-1. Create a folder under `skills/` using lowercase hyphen-case.
+1. Create a folder under `plugins/security-superpowers/skills/` using lowercase hyphen-case.
 2. Add a required `SKILL.md`.
 3. Keep top-level frontmatter limited to validator-supported fields.
 4. Store cybersecurity taxonomy under `metadata`.

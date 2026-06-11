@@ -1,0 +1,20 @@
+{
+  "name": "security-superpowers",
+  "interface": {
+    "displayName": "Security Superpowers"
+  },
+  "plugins": [
+    {
+      "name": "security-superpowers",
+      "source": {
+        "source": "local",
+        "path": "./plugins/security-superpowers"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Security"
+    }
+  ]
+}
