@@ -1,0 +1,36 @@
+{
+  "name": "security-superpowers",
+  "version": "0.1.0",
+  "description": "A cybersecurity skill collection for investigations, detection engineering, cloud security, forensics, threat intelligence, and security testing.",
+  "author": {
+    "name": "Security Superpowers"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "cybersecurity",
+    "security",
+    "incident-response",
+    "threat-intelligence",
+    "forensics",
+    "detection-engineering"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Security Superpowers",
+    "shortDescription": "Cybersecurity workflows for analysis, hunting, response, and testing.",
+    "longDescription": "Security Superpowers packages hundreds of cybersecurity-focused Codex skills covering incident response, malware analysis, cloud security, detection engineering, threat intelligence, forensics, vulnerability management, penetration testing, and governance workflows.",
+    "developerName": "Security Superpowers",
+    "category": "Security",
+    "capabilities": [
+      "Skills",
+      "Security Analysis",
+      "Incident Response"
+    ],
+    "defaultPrompt": [
+      "Investigate suspicious security activity.",
+      "Build a detection for a threat technique.",
+      "Analyze malware or forensic artifacts."
+    ],
+    "brandColor": "#1F6FEB"
+  }
+}
